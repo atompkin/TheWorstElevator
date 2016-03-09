@@ -17,3 +17,33 @@ void ElevatorLogicSubclass::notifyFloorChanged(Elevator *e, int floorBefore, int
 
 }
 
+MotorDirection ElevatorLogicSubclass::elevatorDirection() {
+
+}
+
+Elevator ElevatorLogicSubclass::closestElevator() {
+
+}
+
+bool ElevatorLogicSubclass::checkFloorStatus(Elevator *e){
+	
+}  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
