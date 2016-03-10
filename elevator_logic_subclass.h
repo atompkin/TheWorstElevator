@@ -1,7 +1,9 @@
 #ifndef ELEVATOR_LOGIC_SUBCLASS
 #define ELEVATOR_LOGIC_SUBCLASS
 
+#include "common_defs.h"
 #include "elevator_logic.h"
+#include "elevator.h"
 
 class ElevatorLogicSubclass : public ElevatorLogic {
 public:
@@ -9,8 +11,8 @@ public:
 	void call(int floor, ButtonDirection dir);
 	void selectFloor(Elevator *e, int floor);
 	void notifyFloorChanged(Elevator *e, int floorBefore, int floorAfter);
-	int elevatorDirection();
-	int closestElevator();
+	MotorDirection elevatorDirection(Elevator *e);
+	Elevator closestElevator(Elevator *es, ButtonDirection dir);
 	bool checkFloorStatus(Elevator *e);
 	void optimalElevatorPositions();
 

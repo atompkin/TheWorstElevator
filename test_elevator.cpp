@@ -1,7 +1,7 @@
 
 #include "common_defs.h"
 #include "elevator.h"
-#include "elevator_logic_simple.h"
+#include "elevator_logic_subclass.h"
 #include "elevator_group_simulator.h"
 #include <iostream>
 #include <initializer_list>
@@ -64,7 +64,7 @@ int main()
   Elevator **es = new Elevator*[2];
   es[0] = e1;
   es[1] = e2;
-  ElevatorLogicSimple *els = new ElevatorLogicSimple(es, 2);
+  ElevatorLogicSubclass *els = new ElevatorLogicSubclass(es, 2);
   ElevatorGroupSimulator *esim = new ElevatorGroupSimulator();
   esim->setElevators(es, 2);
   esim->setLogic(els);
@@ -113,7 +113,7 @@ int main()
     for(int j = 0; j < ecount; j++) {
       es[j] = new Elevator(to_string((long long int)j));
     }
-    els = new ElevatorLogicSimple(es, ecount);
+    els = new ElevatorLogicSubclass(es, ecount);
     esim = new ElevatorGroupSimulator();
     esim->setElevators(es, ecount);
     esim->setLogic(els);
