@@ -22,10 +22,10 @@ void ElevatorLogicSubclass::call(int floor, ButtonDirection dir) {
 }
 
 void ElevatorLogicSubclass::selectFloor(Elevator *e, int floor) {
-	if(e->getCurrentFloor < floor) {
-		e->setMotorDirection->M_UP;
-	} else if(e->getCurrentFloor > floor) {
-		e->setMotorDirection->M_DOWN;
+	if(e->getCurrentFloor() < floor) {
+		e->setMotorDirection(M_UP);
+	} else if(e->getCurrentFloor() > floor) {
+		e->setMotorDirection(M_DOWN);
 	} 
 }
 
@@ -43,8 +43,7 @@ bool ElevatorLogicSubclass::checkFloorStatus(Elevator *e){
 return false;	
 }  
 
-void ElevatorLogicSubclass::optimalElevatorPositions() {
-
+void ElevatorLogicSubclass::optimalElevatorPositions(){
 }
 
 Elevator ElevatorLogicSubclass::closestElevator(Elevator *es, ButtonDirection dir) {
@@ -52,11 +51,11 @@ Elevator ElevatorLogicSubclass::closestElevator(Elevator *es, ButtonDirection di
 	for(int i = 0; i < numElevators; i++) {
 		if(es[i]->getMotorDirection() == dir) {		
 			if(dir == M_UP) {
-				if(es[i]->getCurrentFloor < outsideCall) {
+				if(es[i]->getCurrentFloor() < outsideCall) {
 					floors[i] = es[i]->getCurrentFloor();
 				}
 			} else if(dir == M_DOWN) {
-				if(es[i]->getCurrentFloor > outsideCall) {
+				if(es[i]->getCurrentFloor() > outsideCall) {
 					floors[i] = es[i]->getCurrentFloor();
 				}
 			} else {
