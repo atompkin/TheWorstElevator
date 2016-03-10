@@ -5,9 +5,15 @@
 
 class ElevatorLogicSubclass : public ElevatorLogic {
 public:
+	ElevatorLogicSubclass(Elevator **es, int ecount);
 	void call(int floor, ButtonDirection dir);
 	void selectFloor(Elevator *e, int floor);
 	void notifyFloorChanged(Elevator *e, int floorBefore, int floorAfter);
+	int elevatorDirection();
+	int closestElevator();
+	bool checkFloorStatus(Elevator *e);
+	void optimalElevatorPositions();
+
 };
 
 #endif
