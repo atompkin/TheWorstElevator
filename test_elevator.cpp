@@ -76,12 +76,12 @@ int main()
   cout << "Step count: " << esim->getStepCount() << endl;
   cout << endl;
 
-  cout << "** Test 2 **" << endl;
+  /**cout << "** Test 2 **" << endl;
   esim->reset();
   esim->spawnPassenger(5, 1);
   esim->runUntilAllHalted();
   logsMatch(e1, {1, 2, 3, 4, 5, 4, 3, 2, 1});
-  printStats(esim);
+  printStats(esim);**/
   
   cout << "** Test 3 **" << endl;
   esim->reset();

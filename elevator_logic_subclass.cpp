@@ -7,24 +7,19 @@ using namespace std;
 int numElevators = 0;
 int maxFloors = MAX_FLOORS;
 int middleFloor = MAX_FLOORS/2;
-int floorCounter = 0;
+int desiredFloor = 0;
 
 ElevatorLogicSubclass::ElevatorLogicSubclass(Elevator **es, int ecount) 
 	:ElevatorLogic(es, ecount){
-
 
 }
 
 void ElevatorLogicSubclass::getToMiddle(Elevator *e) {
 	floorCounter = 0;
-	if(e->getCurrentFloor() != middleFloor) {
-		if(e->getCurrentFloor() < middleFloor) {
-			e->setMotorDirection(M_UP);
-		} else {
-			e->setMotorDirection(M_DOWN);
-		}	
-	} else if(e->getCurrentFloor() == middleFloor) {
+	if(e->getCurrentFloor() <  middleFloor) {
 		e->setMotorDirection(M_UP);
+	} else {
+		e->setMotorDirection(M_DOWN);
 	}
 }
 
@@ -35,7 +30,7 @@ void ElevatorLogicSubclass::call(int floor, ButtonDirection dir) {
 }
 
 void ElevatorLogicSubclass::selectFloor(Elevator *e, int floor) {
-	getToMiddle(e);		
+
 }
 
 void ElevatorLogicSubclass::notifyFloorChanged(Elevator *e, int floorBefore, int floorAfter) {
@@ -43,8 +38,16 @@ void ElevatorLogicSubclass::notifyFloorChanged(Elevator *e, int floorBefore, int
 		if(es[i]->getCurrentFloor() == MAX_FLOORS) {
 			es[i]->setMotorDirection(M_DOWN);
 		} else if(es[i]->getCurrentFloor() == 1) {
-			es[i]->setMotorDirection(M_HALTED); 
-		}		
+			es[i]->setMotorDirection(M_UP); 
+		}
+		
+		if(es[i]->getCurrentFloor() == 1 && floorBefore == 1) {
+			desiredFloor = 10;
+		}
+
+
+
+	
 	}
 }
 
