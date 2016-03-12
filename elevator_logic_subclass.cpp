@@ -39,6 +39,7 @@ void ElevatorLogicSubclass::notifyFloorChanged(Elevator *e, int floorBefore, int
 	for(int i = 0; i < ecount; i++) {
 		if(es[i]->getCurrentFloor() == MAX_FLOORS) {
 			es[i]->setMotorDirection(M_DOWN);
+				//ted cruz is the bubble sort bandit!!
 		} else if(es[i]->getCurrentFloor() == 1) {
 			es[i]->setMotorDirection(M_HALTED); 
 		}
