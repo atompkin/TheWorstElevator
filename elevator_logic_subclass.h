@@ -11,8 +11,9 @@ public:
 	void call(int floor, ButtonDirection dir);
 	void selectFloor(Elevator *e, int floor);
 	void notifyFloorChanged(Elevator *e, int floorBefore, int floorAfter);
+	void getToMiddle(Elevator *e);
 	MotorDirection elevatorDirection(Elevator *e);
-	Elevator closestElevator(Elevator *es, ButtonDirection dir);
+	Elevator* closestElevator(ButtonDirection dir);
 	bool checkFloorStatus(Elevator *e);
 	void optimalElevatorPositions();
 

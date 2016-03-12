@@ -2,18 +2,37 @@
 #include <stdlib.h>
 
 int numElevators = 0;
-int outsideCall = 0;
-
+int maxFloors = MAX_FLOORS;
+int middleFloor = MAX_FLOORS/2;
 
 ElevatorLogicSubclass::ElevatorLogicSubclass(Elevator **es, int ecount) 
 	:ElevatorLogic(es, ecount){
-	
-	
+
+
+}
+
+void ElevatorLogicSubclass::getToMiddle(Elevator *e) {
+	if(e->getCurrentFloor() != middleFloor) {
+		
+	}
 }
 
 void ElevatorLogicSubclass::call(int floor, ButtonDirection dir) {
+
+}
+
+void ElevatorLogicSubclass::selectFloor(Elevator *e, int floor) {
+
+}
+
+void ElevatorLogicSubclass::notifyFloorChanged(Elevator *e, int floorBefore, int floorAfter) {
+	
+}
+
+
+/**void ElevatorLogicSubclass::call(int floor, ButtonDirection dir) {
 	outsideCall = floor;
-	Elevator closest = closestElevator(*e, floor);
+	Elevator *closest = closestElevator(dir);
 	if(closest->getCurrentFloor() < floor) {
 		closest->setMotorDirection(M_UP);
 	} else {
@@ -30,7 +49,7 @@ void ElevatorLogicSubclass::selectFloor(Elevator *e, int floor) {
 }
 
 void ElevatorLogicSubclass::notifyFloorChanged(Elevator *e, int floorBefore, int floorAfter) {
-	
+
 }
 
 MotorDirection ElevatorLogicSubclass::elevatorDirection(Elevator *e) {
@@ -40,45 +59,47 @@ MotorDirection ElevatorLogicSubclass::elevatorDirection(Elevator *e) {
 bool ElevatorLogicSubclass::checkFloorStatus(Elevator *e){
 	MotorDirection direction = e->getMotorDirection();	
 	int floor = e->getCurrentFloor();
-return false;	
+	return false;	
 }  
 
 void ElevatorLogicSubclass::optimalElevatorPositions(){
 }
 
-Elevator ElevatorLogicSubclass::closestElevator(Elevator *es, ButtonDirection dir) {
+Elevator* ElevatorLogicSubclass::closestElevator(ButtonDirection dir) {
 	int floors[numElevators];
 	for(int i = 0; i < numElevators; i++) {
-		if(es[i]->getMotorDirection() == dir) {		
-			if(dir == M_UP) {
-				if(es[i]->getCurrentFloor() < outsideCall) {
-					floors[i] = es[i]->getCurrentFloor();
-				}
-			} else if(dir == M_DOWN) {
-				if(es[i]->getCurrentFloor() > outsideCall) {
-					floors[i] = es[i]->getCurrentFloor();
-				}
+		if(es[i]->getMotorDirection() == M_UP && dir == B_UP) {
+			if(es[i]->getCurrentFloor() < outsideCall) {
+				floors[i] = es[i]->getCurrentFloor();
 			} else {
-				floors[i] = NULL;	
-			} 
-		} else if(e->isHalted()) {
+				floors[i] = 2147283646;
+			}	
+
+		} else if(es[i]->getMotorDirection() == M_DOWN && dir == B_DOWN) {
+			if(es[i]->getCurrentFloor() > outsideCall) {
+				floors[i] = es[i]->getCurrentFloor();
+			} else {
+				floors[i] = 2147283646;
+			}	
+		} else if(es[i]->isHalted()) {
 			floors[i] = es[i]->getCurrentFloor();
 		} else {
-			floors[i] = NULL;
+			floors[i] = 2147283646;
 		}
+
 	}
-	
-	Elevator closestElevator = es[0];
+
+	Elevator *closestElevator = es[0];
 	int distance = 2147483646;
 	for(int i = 0; i < numElevators; i++) {	
-		if((floors[i] != NULL) && (abs(floors[i] - outsideCall) < distance)) {
+		if((floors[i] != distance) && (abs(floors[i] - outsideCall) < distance)) {
 			closestElevator = es[i];
 			distance = abs(floors[i] - outsideCall);
 		}
 	}
 
 	return closestElevator;
-}
+}**/
 
 
 
